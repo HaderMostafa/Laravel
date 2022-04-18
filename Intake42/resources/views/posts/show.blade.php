@@ -24,11 +24,25 @@
   </div>
 
   <form>
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Your Comment">
+
+    <input type="text" class="form-control" placeholder="Your Comment">
+
+    <div class="d-flex justify-content-center mt-3">
+
+       <a href="#" class="btn btn-success mx-3">Create</a>
+
+       <a href="#" class="btn btn-info mx-3">View</a>
+
+       <a href="#" class="btn btn-primary mx-3">Edit</a>
+                   
+       <form action= "#" method="POST" >
+          @method('DELETE')
+          @csrf
+          <button onclick="return confirm('Are you sure you want to delete this comment?');" class="btn btn-danger mx-3">Delete</button>
+        </form>
+
     </div>
-  
-    <button type="submit" class="btn btn-primary">Send</button>
+
   </form>
 
 </div>
