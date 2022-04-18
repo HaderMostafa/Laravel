@@ -19,18 +19,25 @@
             <tbody>
             @foreach ( $posts as $post)        
               <tr>
-                <td>{{ $post['id'] }}</th>
-                <td>{{ $post['title'] }}</td>
-                <td>{{ $post['post_creator'] }}</td>
-                <td>{{ $post['created_at'] }}</td>
+                <td>{{ $post->id }}</th>
+                <td>{{ $post->title }}</td>
+                <td>{{ $post->user ? $post->user->name : "Not Found" }}</td>
+                <td>{{ \Carbon\Carbon::parse( $post->created_at )->toDateString(); }}</td>
+
                 <td>
-                    <a href="{{ route('posts.show', ['post' => $post['id']]) }}" class="btn btn-info">View</a>
-                    <a href="{{ route('posts.edit', ['post' => $post['id']]) }}" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
-                </td>
+                    <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-info">View</a>
+                    <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn btn-primary">Edit</a>
+                   
+                    <form style="display: inline" method="POST" action="{{ route('posts.destroy', ['post' => $post->id]) }}">
+                    @method('DELETE')
+                    @csrf
+                    <button onclick="return confirm('Are you sure you want to delete this post?');" class="btn btn-danger">Delete</button>
+                    </form>
+                  </td>
               </tr>
               @endforeach
 
             </tbody>
           </table>
+          <div class="d-flex justify-content-center"> {{ $posts->links() }}</div>
 @endsection
