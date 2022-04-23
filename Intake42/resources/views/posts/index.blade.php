@@ -13,6 +13,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Posted By</th>
                 <th scope="col">Created At</th>
+                <th scope="col">Slug</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -23,6 +24,7 @@
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->user ? $post->user->name : "Not Found" }}</td>
                 <td>{{ \Carbon\Carbon::parse( $post->created_at )->toDateString(); }}</td>
+                <td>{{ $post->slug }}</td>
 
                 <td>
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-info">View</a>

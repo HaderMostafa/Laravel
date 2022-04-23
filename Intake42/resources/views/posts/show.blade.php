@@ -31,7 +31,7 @@
 
        <a href="#" class="btn btn-success mx-3">Create</a>
 
-       <a href="#" class="btn btn-info mx-3">View</a>
+       <!-- <a href="#" class="btn btn-info mx-3">View</a>
 
        <a href="#" class="btn btn-primary mx-3">Edit</a>
                    
@@ -39,7 +39,7 @@
           @method('DELETE')
           @csrf
           <button onclick="return confirm('Are you sure you want to delete this comment?');" class="btn btn-danger mx-3">Delete</button>
-        </form>
+        </form> -->
 
     </div>
 

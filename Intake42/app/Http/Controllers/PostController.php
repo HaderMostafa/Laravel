@@ -10,15 +10,22 @@ use App\Models\User;
 
 use Carbon\Carbon;
 
+use App\Http\Requests\StorePostRequest;
+
+use App\Jobs\PruneOldPostsJob;
+
 class PostController extends Controller
 {
     public function index()
     {
         $posts = Post::paginate(3); 
-        
+
+        //PruneOldPostsJob::dispatch(); //Task Schedule
+
         return view('posts.index',[
             'posts' => $posts,
         ]);
+
     }
 
     public function create()
@@ -28,7 +35,7 @@ class PostController extends Controller
         return view('posts.create',['users'=> $users]);
     }
 
-    public function store()
+    public function store(StorePostRequest $request)
     {
         $data = request()->all();
        
@@ -61,7 +68,7 @@ class PostController extends Controller
        return view('posts.edit',['post'=> $post,'users'=> $users]);
     }
 
-    public function update($postId)
+    public function update(StorePostRequest $request, $postId)
     {
         $data = request()->all();
         
