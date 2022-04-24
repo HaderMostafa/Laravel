@@ -34,9 +34,9 @@ class PruneOldPostsJob implements ShouldQueue
      */
     public function handle()
     {
-        $dateOldertwoYears=Carbon::now()->subDays(4)->toDateTimeString();
+        //$dateOldertwoYears=Carbon::now()->subDays(4)->toDateTimeString();
         
-        //$dateOldertwoYears=Carbon::now()->subYears(2)->toDateTimeString();
+        $dateOldertwoYears=Carbon::now()->subYears(2)->toDateTimeString();
         
         $oldPosts=Post::where('created_at','<=',$dateOldertwoYears)->delete();
     }

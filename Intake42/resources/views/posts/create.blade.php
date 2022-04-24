@@ -9,6 +9,7 @@
                 <label for="exampleFormControlInput1" class="form-label">Title</label>
                 <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
             </div>
+
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Description</label>
                 <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -25,6 +26,11 @@
                 </select>
             </div>
 
-          <button class="btn btn-success">Create</button>
+            <div>
+                <input type="file" name="image" class="form-control">
+            </div>
+
+          <button class="btn btn-success my-3">Create</button>
+
         </form>
 @endsection

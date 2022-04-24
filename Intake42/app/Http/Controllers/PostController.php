@@ -25,7 +25,6 @@ class PostController extends Controller
         return view('posts.index',[
             'posts' => $posts,
         ]);
-
     }
 
     public function create()
@@ -43,8 +42,9 @@ class PostController extends Controller
             'title'=>$data['title'],
             'description'=>$data['description'],
             'user_id'=>$data['post_creator'],
+            'img'=>$data['image'],
         ]);
-        
+
         return to_route('posts.index');
     }
 
