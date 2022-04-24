@@ -9,16 +9,22 @@ use App\Models\Post;
 
 use App\Http\Requests\StorePostRequest;
 
+use App\Http\Resources\PostResource;
+
 class PostController extends Controller
 {
     public function index()
     {
-        return Post::all();
+        $posts = Post::all();
+
+        return PostResource::collection($posts);
     }
 
     public function show($postId)
-    {
-        return Post::find($postId);
+    { 
+        $post = Post::find($postId);
+
+        return new PostResource($post);
     }
 
     public function store(StorePostRequest $request)
@@ -29,9 +35,8 @@ class PostController extends Controller
             'title'=>$data['title'],
             'description'=>$data['description'],
             'user_id'=>$data['post_creator'],
-            'img'=>$data['image'],
         ]);
 
-        return $post;
+        return new PostResource($post);
     }
 }
